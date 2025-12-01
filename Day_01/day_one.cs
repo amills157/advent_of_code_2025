@@ -10,7 +10,7 @@ namespace advent_day_1 {
          // Needs to be an array not a list for .Length
          int[] intArray = intList.ToArray();
 
-         int starting_number = 50;
+         int position = 50;
 
          int part_one = 0;
          
@@ -19,18 +19,16 @@ namespace advent_day_1 {
 
             if (directions[i] == "L")
             {  
-               starting_number = starting_number -= intArray[i];
-
+               position -= intArray[i];
             }
             else
             {
-               starting_number += intArray[i];
-               
+               position += intArray[i];
             }
             
-            starting_number = starting_number % 100;
+            position = position % 100;
 
-            if (starting_number == 0)
+            if (position == 0)
             {
                part_one += 1;
             }
@@ -45,7 +43,7 @@ namespace advent_day_1 {
          // I am sure there is a smart way to do this - But clearly it has elduded me
          public static void partTwo(ref List<int> intList, ref List<string> directions)
          {
-            int pos = 50; 
+            int position = 50; 
             int part_two = 0; 
             
             int[] intArray = intList.ToArray();
@@ -57,18 +55,18 @@ namespace advent_day_1 {
                {
                   if (directions[i] == "L")
                   {
-                     pos = (pos - 1 + 100) % 100;
+                     position = (position - 1 + 100) % 100;
                   }
                   else
                   {
-                     pos = (pos + 1) % 100; 
+                     position = (position + 1) % 100; 
                   }
       
-                  if (pos == 0)
+                  if (position == 0)
                   {
                      part_two +=1;
                   }
-                  
+
                }
             }
         
