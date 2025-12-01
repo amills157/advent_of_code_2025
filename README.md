@@ -1,5 +1,7 @@
-# advent_of_code_2020
+# advent_of_code_2025
 
-Not so elegant solutions to Advent of Code 2020 (https://adventofcode.com/2020) challenges in C#
+Not so elegant solutions to Advent of Code 2025 (https://adventofcode.com/2025) challenges in C#
 
-This was done in part to learn C# so implementations may be more basic / readable
+Implementations may be more basic / readable
+
+Tested and run on https://www.onlinegdb.com/online_csharp_compiler

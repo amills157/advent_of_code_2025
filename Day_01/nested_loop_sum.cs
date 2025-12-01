@@ -4,58 +4,57 @@ using System.Collections.Generic;
 
 namespace advent_day_1 {
    class puzzle_1 {
+
+      public static  void partOne(ref List<int> intList, ref List<string> directions){
+         // Needs to be an array not a list for .Length
+         int[] intArray = intList.ToArray();
+
+         int starting_number = 50;
+
+         int part_one = 0;
+
+         for (int i = 0; i < intArray.Length; i++)
+         {  
+
+            if (directions[i] == "L")
+            {  
+               starting_number = starting_number -= intArray[i];
+            }
+            else
+            {
+               starting_number += intArray[i];
+            }
+            
+            starting_number = starting_number % 100;
+
+            if (starting_number == 0)
+            {
+               part_one += 1;
+            }
+            
+         }
+
+         Console.WriteLine("part one answer is: {0}", part_one);
+      }
+
       static void Main(string[] args) 
       {
          // Load input
-         IEnumerable<string> lines = File.ReadLines("puzzle_1_input.txt");
+         IEnumerable<string> lines = File.ReadLines("example.txt");
 
          var intList = new List<int>();
+
+         List<string> directions = new List<string>();
 
          // Convert each string int to int
          foreach (string r in lines)
          {  
-            intList.Add(Convert.ToInt32(r));
+            directions.Add(r.Substring(0, 1)); // Gets the first character
+            intList.Add(Convert.ToInt32(r.Substring(1)));
          }
 
-         // Needs to be an array not a list for .Length
-         int[] intArray = intList.ToArray();
+         partOne(ref intList, ref directions);
 
-         // Classic nested loop comparision - Not the most effective. But understandable. Does mean we get the answer twice though        
-         for (int i = 0; i < intArray.Length; i++)
-         {
-            for (int j = 0; j < intArray.Length; j++)
-            {
-               if (i != j)
-               {
-                  int sum = intArray[i] + intArray[j];
-                  if (sum == 2020){
-                     Console.WriteLine(intArray[i] * intArray[j]);
-                     goto exitLoop1;
-                  }
-               }
-            }
-         }
-
-         exitLoop1:
-
-         for (int i = 0; i < intArray.Length; i++)
-         {
-            for (int j = 0; j < intArray.Length; j++)
-            {
-               for (int k = 0; k < intArray.Length; k++)
-               {  
-                  if (i != j && i != k)
-                  {
-                     int sum = intArray[i] + intArray[j] + intArray[k];
-                     if (sum == 2020){
-                        Console.WriteLine(intArray[i] * intArray[j] * intArray[k]);
-                        goto exitLoop2;
-                     }
-                  }
-               }
-            }
-         }
-         exitLoop2:;
       }
    }
 }

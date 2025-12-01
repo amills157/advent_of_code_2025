@@ -1,2 +1,0 @@
-Card loop = 4744857
-Door loop = 1182212
